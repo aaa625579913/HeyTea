@@ -33,9 +33,10 @@
             <image class="top-intro-img" src="../../static/images/tips.png" />
             <text class="top-intro-intro">冬日来点暖，我们的大部分饮品都可制作热饮咯咯咯</text>
             <text class="top-intro-more" bindtap="showMore">更多</text>
-            <image class="top-intro-down" src="../../static/images/down.png" bindtap="showMore"/>
+            <image class="top-intro-down" src="{{showMore?'../../static/images/up.png':'../../static/images/down.png'}}" bindtap="showMore"/>
         </view>
     </view>
+    <view wx:if="{{showMore}}" class="coverAll-more" bindtap="closeMore"></view>
     <view wx:if="{{showMore}}" class="cover-more">
 
     </view>
@@ -73,7 +74,7 @@
                             <view class="info-intro">{{item.intro}}</view>
                             <view class="info-bottom">
                                 <view class="into-value">￥{{item.value}}</view>
-                                <view class="info-add">选规格</view>
+                                <view class="info-add" bindtap="showInfo">选规格</view>
                             </view>
                         </view>
                     </view>
@@ -82,100 +83,28 @@
         </scroll-view>
     </view>
 </view>
-<!-- <view class="main" style="margin-top:{{statusBarHeight+44}}px;">
-    <swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true">
-        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
-            <swiper-item>
-                <image src="{{item}}" class="slide-image" width="100%"/>
-            </swiper-item>
-        </block>
-    </swiper>
-    <view class="selected">
-        <view class="select-title"><text>精选主题</text></view>
-        <view class="select-top">
-            <view class="select-top-small">
-                <navigator url="../list/list">
-                    <image src="../../static/images/s1.png"></image>
-                </navigator>
-            </view>
-            <view class="select-top-small">
-                <navigator url="../list/list">
-                    <image src="../../static/images/s2.png"></image>
-                </navigator>
-            </view>
-        </view>
-        <view class="select-bottom">
-            <navigator url="../list/list">
-                <image src="../../static/images/s3.png"></image>
-            </navigator>
-        </view>
+<!-- 半透明背景图 -->
+<view wx:if="{{showInfo}}" class="coverAll-info" bindtap="closeInfo"></view>
+<!-- 选规格提示窗 -->
+<view wx:if="{{showInfo}}" class="coverAll-info-add">
+    <!-- 头部：名称和关闭按钮 -->
+    <view class="cInfo-header">
+        <text class="header-text">Great头</text>
+        <image class="header-X" src="../../static/images/close.png" bindtap="closeInfo"/>
     </view>
-    <view class="newest">
-        <view class="newest-title"><text>最近新品</text></view>
-        <view class="newest-box">
-            <view class="newest-list">
-                <navigator url="../details/details">
-                    <image src="../../static/images/s4.png"></image>
-                    <view class="newest-text"><text>瓜子 100g</text></view>
-                    <view class="newest-text"><text>￥ 0.01</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="../details/details">
-                    <image src="../../static/images/s5.png"></image>
-                    <view class="newest-text"><text>芹菜 半斤</text></view>
-                    <view class="newest-text"><text>￥ 0.02</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="../details/details">
-                    <image src="../../static/images/s6.png"></image>
-                    <view class="newest-text"><text>素米 375g</text></view>
-                    <view class="newest-text"><text>￥ 0.03</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="../details/details">
-                    <image src="../../static/images/s4.png"></image>
-                    <view class="newest-text"><text>瓜子 100g</text></view>
-                    <view class="newest-text"><text>￥ 0.01</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="../details/details">
-                    <image src="../../static/images/s5.png"></image>
-                    <view class="newest-text"><text>芹菜 半斤</text></view>
-                    <view class="newest-text"><text>￥ 0.02</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="../details/details">
-                    <image src="../../static/images/s6.png"></image>
-                    <view class="newest-text"><text>素米 375g</text></view>
-                    <view class="newest-text"><text>￥ 0.03</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="../details/details">
-                    <image src="../../static/images/s4.png"></image>
-                    <view class="newest-text"><text>瓜子 100g</text></view>
-                    <view class="newest-text"><text>￥ 0.01</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="../details/details">
-                    <image src="../../static/images/s5.png"></image>
-                    <view class="newest-text"><text>芹菜 半斤</text></view>
-                    <view class="newest-text"><text>￥ 0.02</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="../details/details">
-                    <image src="../../static/images/s6.png"></image>
-                    <view class="newest-text"><text>素米 375g</text></view>
-                    <view class="newest-text"><text>￥ 0.03</text></view>
-                </navigator>
-            </view>
-        </view>
+    <!-- 身体:title和选择按钮
+    <view class="cInfo-body">
+        <view class="body-title"></view>
+        <radio class="body-radio" />
     </view>
-</view> -->
+    底部:总金额及状态  和提交按钮
+    <view class="cInfo-bottom">
+        <view class="bottom-left">
+            <view class="left-money"></view>
+            <view class="left-tips"></view>
+        </view>
+        <view class="bottom-right">
+            <image class="right-img" src=""/>
+        </view>
+    </view> -->
+</view>

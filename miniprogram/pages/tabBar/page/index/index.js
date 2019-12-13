@@ -401,18 +401,32 @@ Page({
   },
   showMore() {
     let self = this;
-    if (self.data.showMore) {
-      self.setData({
-        showMore: false
-      })
-    } else {
-      self.setData({
-        showMore: true
-      })
-    }
+    self.setData({
+      showMore: true
+    })
 
   },
+  closeMore() {
+    let self = this;
+    self.setData({
+      showMore: false
+    })
+  },
 
+  showInfo() {
+    let self = this;
+    wx.hideTabBar()
+    self.setData({
+      showInfo: true
+    })
+  },
+  closeInfo(){
+    let self = this;
+    wx.showTabBar()
+    self.setData({
+      showInfo: false
+    })
+  },
   goindex() {
     wx.switchTab({
       url: '/pages/index/index'

@@ -65,11 +65,67 @@ swiper-item image {
     font-size: 32rpx;
 }
 
+/* 新css */
 .container {
     height: 100vh;
     width: 100vw;
 }
 
+.coverAll-more {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+}
+
+.coverAll-info {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    background: rgba(000, 000, 000, 0.25);
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+.coverAll-info-add {
+    position: absolute;
+    height: 60vh;
+    width: 70vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    border: 2rpx solid #acadb3;
+    border-radius: 20rpx;
+    box-shadow: 0rpx 0rpx 18rpx #e2e1e4;
+    background: #ffffff;
+    z-index: 4;
+}
+
+.coverAll-info-add .cInfo-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    height: 80rpx;
+    widows: 100%;
+    /* background: salmon; */
+}
+.coverAll-info-add .cInfo-header .header-text{
+    font-size: 34rpx;
+    font-family: "PingFang";
+    font-weight: bold;
+    margin-left: 20rpx;
+}
+.coverAll-info-add .cInfo-header .header-X{
+    height: 50rpx;
+    width: 50rpx;
+    margin-right: 20rpx;
+}
 .top-body {
     height: 30vh;
     width: 100%;
@@ -258,7 +314,8 @@ swiper-item image {
     height: 70vh;
     width: 100%;
 }
-.cover-more{
+
+.cover-more {
     position: absolute;
     top: 30vh;
     height: 70vh;
@@ -271,19 +328,23 @@ swiper-item image {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
+
 @keyframes coverMore {
     /** 第一种写法**/
 
     0% {
         opacity: 0.8;
     }
+
     50% {
         opacity: 0.9;
     }
-    100%{
+
+    100% {
         opacity: 1.0;
     }
 }
+
 /*main-body*/
 .categroy-left {
     float: left;
