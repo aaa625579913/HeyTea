@@ -1,0 +1,70 @@
+/* pages/tabBar/cart/cart.wxss */
+
+.contain{
+    height: 100vh;
+    width: 100vw;
+}
+
+.body{
+    position: absolute;
+    height: 80vh;
+    width: 80vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-45%);
+    border: 2rpx solid #acadb3;
+    border-radius: 20rpx;
+    box-shadow: 0rpx 0rpx 18rpx #e2e1e4;
+}
+
+.body .img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 400rpx;
+    width: 400rpx;
+    transform: translate(-50%,-50%);
+}
+
+
+
+/* new */
+.goHome {
+    width: 16vmin;
+    height: 16vmin;
+    position: absolute;
+    top: 0;
+    left: 0rpx;
+    z-index: 6000;
+}
+
+.goRefresh {
+    width: 16vmin;
+    height: 16vmin;
+    position: absolute;
+    top: 0;
+    left: 16.13vmin;
+    z-index: 6000;
+
+}
+
+.S_title {
+    position: absolute;
+    display: flex;
+    background-color: rgba(000, 000, 000, 0.15);
+    width: 23.73vmin;
+    border-radius: 6.67vmin;
+    height: 8.53vmin;
+    left: 3.33vmin;
+    align-items: center;
+    z-index: 20;
+
+}
+
+.S_line {
+    width: 0.27vmin;
+    height: 4.8vmin;
+    background-color: #eaeaea;
+    display: block;
+    opacity: 0.2;
+}

@@ -1,0 +1,51 @@
+
+.form-box{
+    padding-left: 30rpx;
+}
+.form-box input{
+    height: 90rpx;
+    border-bottom: 1rpx solid #ededed;
+    font-size: 28rpx;
+    color: #999;
+}
+.form-box .input-placeholder{
+    color: #aaa;
+}
+.form-box button{
+    margin:30rpx 30rpx 0 0;
+}
+.buttonDown_bottom {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    height: 13vmin;
+    width: 74.1vmin;
+    border: none;
+    border-radius: 50rpx;
+    background: linear-gradient(to right, #ddc181, #edd8a7);
+    opacity: 0.9;
+    margin-top: 93.6vmin;
+}
+
+.buttonUp_bottom {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    height: 13vmin;
+    width: 74.1vmin;
+    border: none;
+    border-radius: 50rpx;
+    background: linear-gradient(to right, #ddc181, #edd8a7);
+    margin-top: 93.6vmin;
+}
+.text_bottom {
+    margin-top: 1.3vmin;
+    font-family: 'PingFang';
+    font-size: 4.16vmin;
+    font-weight: bold;
+    color: #1d1210;
+}

@@ -1,0 +1,37 @@
+<view style="position:fixed;width:100%;z-index:1000;height:{{statusBarHeight+44}}px;width:100%;display:flex;justify-content: center;background:#cfa763;z-index:999;">
+    <view style="position:absolute;height:70rpx;width:70rpx;left:16rpx;top:{{statusBarHeight+4}}px;display:flex;align-items:center;justify-content:center;" bindtap="goback">
+        <image src='../../static/images/back_b.png'  style='width:21rpx;height:36rpx;left:28rpx;'></image>
+    </view>
+    <view style='position:absolute;top:{{statusBarHeight+8}}px;font-size:36rpx;font-weight:bold;z-index:999;'>
+        列表
+    </view>
+</view>
+<view class="main" style="margin-top:{{statusBarHeight+44}}px;">
+    <view class="banner">
+        <image src="../../static/images/list1.png"></image>
+    </view>
+
+    <view class="list-box">
+        <view class="newest-list">
+            <navigator url="../details/details">
+                <image src="../../static/images/s4.png"></image>
+                <view class="newest-text"><text>瓜子 100g</text></view>
+                <view class="newest-text"><text>￥ 0.01</text></view>
+            </navigator>
+        </view>
+        <view class="newest-list">
+            <navigator url="../details/details">
+                <image src="../../static/images/s5.png"></image>
+                <view class="newest-text"><text>芹菜 半斤</text></view>
+                <view class="newest-text"><text>￥ 0.02</text></view>
+            </navigator>
+        </view>
+        <view class="newest-list">
+            <navigator url="../details/details">
+                <image src="../../static/images/s6.png"></image>
+                <view class="newest-text"><text>素米 375g</text></view>
+                <view class="newest-text"><text>￥ 0.03</text></view>
+            </navigator>
+        </view>
+    </view>
+</view>

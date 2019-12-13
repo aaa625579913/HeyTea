@@ -1,0 +1,5 @@
+/* miniprogram/pages/tabBar/page/store/store.wxss */
+.contain{
+    height: 100vh;
+    width: 100vw;
+}

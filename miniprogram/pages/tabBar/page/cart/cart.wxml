@@ -1,0 +1,21 @@
+<view style="width:100%;z-index:999;height:{{statusBarHeight+44}}px;width:100%;display:flex;justify-content: center;background:#f6f6f6;">
+    <view class="goHome" bindtap="goindex"></view>
+    <view class="goRecord" bindtap="goliveroom"></view>
+    <view class="S_title" style="margin-top:{{statusBarHeight+4}}px;">
+        <view style="height:9.33vmin;width:12.53vmin;padding-right:3.2vmin;display:flex;align-items:center;justify-content:center;" bindtap="goindex">
+            <image src='../../static/images/top-home.png' style='height:4.27vmin;width:4.53vmin;margin-left:4vmin;'></image>
+        </view>
+        <view class="S_line"></view>
+        <view style="height:9.33vmin;width:11.73vmin;padding-left:3.2vmin;margin-right:3.73vmin;display:flex;align-items:center;justify-content:center;" bindtap="goliveroom">
+            <image src='../../static/images/replay.png' style='height:4.53vmin;width:4.93vmin;'></image>
+        </view>
+    </view>
+    <!-- <view style='position:absolute;top:{{statusBarHeight+8}}px;font-size:32rpx;font-weight:bold;color:#ffffff;z-index:999;'>
+        我的页面
+    </view> -->
+</view>
+<view class="contain">
+  <view class="body">
+      <image class="img" src="../../static/images/lemon.png" />
+  </view>
+</view>>

@@ -1,0 +1,181 @@
+<view style="position:fixed;width:100%;z-index:1000;height:{{statusBarHeight+44}}px;width:100%;display:flex;justify-content: center;background:#ffffff;z-index:999;">
+    <!-- <view style="position:absolute;height:70rpx;width:70rpx;left:16rpx;top:{{statusBarHeight+4}}px;display:flex;align-items:center;justify-content:center;" bindtap="goback">
+        <image src='../../static/images/back_b.png'  style='width:21rpx;height:36rpx;left:28rpx;'></image>
+    </view> -->
+    <view style='position:absolute;top:{{statusBarHeight+8}}px;font-size:32rpx;font-weight:bold;z-index:999;'>
+        喜茶Go
+    </view>
+</view>
+<view class="container">
+    <view class="top-body" style="margin-top:{{statusBarHeight+44}}px">
+        <view class="top-search">
+            <view class="search-button">
+                <image class="search-button-img" src="../../static/images/search.png" />
+                <text class="search-button-text">搜索</text>
+            </view>
+        </view>
+        <view class="top-address">
+            <view class="top-address-address">
+                软件产业基地6栋
+                <image class="top-address-right" src="../../static/images/right.png" />
+            </view>
+            <view class="top-address-switch">
+                <view class="{{switchChange?'top-address-switch-leftC':'top-address-switch-left'}}" id="ziqu" bindtap="handleSwitch">
+                    自取
+                </view>
+                <view class="{{switchChange?'top-address-switch-rightC':'top-address-switch-right'}}" id="waimai" bindtap="handleSwitch">
+                    外卖
+                </view>
+            </view>
+        </view>
+        <view class="top-direction">距离您100m</view>
+        <view class="top-intro">
+            <image class="top-intro-img" src="../../static/images/tips.png" />
+            <text class="top-intro-intro">冬日来点暖，我们的大部分饮品都可制作热饮咯咯咯</text>
+            <text class="top-intro-more" bindtap="showMore">更多</text>
+            <image class="top-intro-down" src="../../static/images/down.png" bindtap="showMore"/>
+        </view>
+    </view>
+    <view wx:if="{{showMore}}" class="cover-more">
+
+    </view>
+    <view class="main-body">
+        <view class="categroy-left">
+            <view wx:for="{{category}}" wx:key="index" data-id="{{item.id}}" data-img="{{item.img}}" data-index="{{index}}" bindtap="switchTab" class="cate-list {{curIndex === index?'on':''}}">
+                <image class="cate-img" src="{{item.img}}"></image>
+                <text class="cate-text">{{item.name}}</text>
+            </view>
+        </view>
+        <scroll-view class="categroy-right" scroll-y="{{isScroll}}" scroll-top="{{scrollTop}}" scroll-into-view="{{toView}}" scroll-with-animation="true" bindscroll="onBindscroll">
+            <!-- 第一个swiper-banner -->
+            <swiper class="cate-banner" indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true">
+                <block wx:for="{{detail.banner1}}" wx:key="{{index}}">
+                    <swiper-item>
+                        <image src="{{item}}" class="slide-image" width="100%" />
+                    </swiper-item>
+                </block>
+            </swiper>
+            <!-- 第二个swiper-banner -->
+            <swiper class="cate-banner" indicator-dots="true" autoplay="true" indicator-dots="{{false}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+                <block wx:for="{{detail.banner2}}" wx:key="{{index}}">
+                    <swiper-item>
+                        <image src="{{item}}" class="slide-image" width="100%" />
+                    </swiper-item>
+                </block>
+            </swiper>
+            <block wx:for="{{detail.bodyInfoList}}" wx:key="index">
+                <view class="cate-title">{{item.title}}</view>
+                <block wx:for="{{item.infoList}}" wx:key="index">
+                    <view class="cate-info">
+                        <image class="info-img" src="{{item.img}}" />
+                        <view class="info-area">
+                            <view class="info-name">{{item.name}}</view>
+                            <view class="info-intro">{{item.intro}}</view>
+                            <view class="info-bottom">
+                                <view class="into-value">￥{{item.value}}</view>
+                                <view class="info-add">选规格</view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+        </scroll-view>
+    </view>
+</view>
+<!-- <view class="main" style="margin-top:{{statusBarHeight+44}}px;">
+    <swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true">
+        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+            <swiper-item>
+                <image src="{{item}}" class="slide-image" width="100%"/>
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="selected">
+        <view class="select-title"><text>精选主题</text></view>
+        <view class="select-top">
+            <view class="select-top-small">
+                <navigator url="../list/list">
+                    <image src="../../static/images/s1.png"></image>
+                </navigator>
+            </view>
+            <view class="select-top-small">
+                <navigator url="../list/list">
+                    <image src="../../static/images/s2.png"></image>
+                </navigator>
+            </view>
+        </view>
+        <view class="select-bottom">
+            <navigator url="../list/list">
+                <image src="../../static/images/s3.png"></image>
+            </navigator>
+        </view>
+    </view>
+    <view class="newest">
+        <view class="newest-title"><text>最近新品</text></view>
+        <view class="newest-box">
+            <view class="newest-list">
+                <navigator url="../details/details">
+                    <image src="../../static/images/s4.png"></image>
+                    <view class="newest-text"><text>瓜子 100g</text></view>
+                    <view class="newest-text"><text>￥ 0.01</text></view>
+                </navigator>
+            </view>
+            <view class="newest-list">
+                <navigator url="../details/details">
+                    <image src="../../static/images/s5.png"></image>
+                    <view class="newest-text"><text>芹菜 半斤</text></view>
+                    <view class="newest-text"><text>￥ 0.02</text></view>
+                </navigator>
+            </view>
+            <view class="newest-list">
+                <navigator url="../details/details">
+                    <image src="../../static/images/s6.png"></image>
+                    <view class="newest-text"><text>素米 375g</text></view>
+                    <view class="newest-text"><text>￥ 0.03</text></view>
+                </navigator>
+            </view>
+            <view class="newest-list">
+                <navigator url="../details/details">
+                    <image src="../../static/images/s4.png"></image>
+                    <view class="newest-text"><text>瓜子 100g</text></view>
+                    <view class="newest-text"><text>￥ 0.01</text></view>
+                </navigator>
+            </view>
+            <view class="newest-list">
+                <navigator url="../details/details">
+                    <image src="../../static/images/s5.png"></image>
+                    <view class="newest-text"><text>芹菜 半斤</text></view>
+                    <view class="newest-text"><text>￥ 0.02</text></view>
+                </navigator>
+            </view>
+            <view class="newest-list">
+                <navigator url="../details/details">
+                    <image src="../../static/images/s6.png"></image>
+                    <view class="newest-text"><text>素米 375g</text></view>
+                    <view class="newest-text"><text>￥ 0.03</text></view>
+                </navigator>
+            </view>
+            <view class="newest-list">
+                <navigator url="../details/details">
+                    <image src="../../static/images/s4.png"></image>
+                    <view class="newest-text"><text>瓜子 100g</text></view>
+                    <view class="newest-text"><text>￥ 0.01</text></view>
+                </navigator>
+            </view>
+            <view class="newest-list">
+                <navigator url="../details/details">
+                    <image src="../../static/images/s5.png"></image>
+                    <view class="newest-text"><text>芹菜 半斤</text></view>
+                    <view class="newest-text"><text>￥ 0.02</text></view>
+                </navigator>
+            </view>
+            <view class="newest-list">
+                <navigator url="../details/details">
+                    <image src="../../static/images/s6.png"></image>
+                    <view class="newest-text"><text>素米 375g</text></view>
+                    <view class="newest-text"><text>￥ 0.03</text></view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view> -->

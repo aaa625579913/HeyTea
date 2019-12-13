@@ -1,0 +1,5 @@
+<!-- miniprogram/pages/tabBar/page/store/store.wxml -->
+<view class="contain">
+    <image style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);height:400rpx;width:400rpx;" src="../../static/images/tips.png" />
+    <view style="position:absolute;top:70%;left:50%;transform:translate(-50%,-50%);font-size:40rpx;font-weight:bold;">暂无数据</view>
+</view>

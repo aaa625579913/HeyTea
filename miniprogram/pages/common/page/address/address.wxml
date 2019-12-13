@@ -1,0 +1,20 @@
+<view style="position:fixed;width:100%;z-index:1000;height:{{statusBarHeight+44}}px;width:100%;display:flex;justify-content: center;background:#cfa763;z-index:999;">
+    <view style="position:absolute;height:70rpx;width:70rpx;left:16rpx;top:{{statusBarHeight+4}}px;display:flex;align-items:center;justify-content:center;" bindtap="goback">
+        <image src='../../static/images/back_b.png' style='width:21rpx;height:36rpx;left:28rpx;'></image>
+    </view>
+    <view style='position:absolute;top:{{statusBarHeight+8}}px;font-size:36rpx;font-weight:bold;z-index:999;'>
+        地址管理
+    </view>
+</view>
+<view class="main" style="margin-top:{{statusBarHeight+44}}px;">
+    <view class="form-box">
+        <form bindsubmit="formSubmit">
+            <input value="{{address.name}}" placeholder="姓名" bindinput="bindName" />
+            <input type="number" value="{{address.phone}}" placeholder="电话号码" bindinput="bindPhone" />
+            <input value="{{address.detail}}" placeholder="详细地址" bindinput="bindDetail" />
+            <button class="{{taped?'buttonDown_bottom':'buttonUp_bottom'}}" form-type="submit" bindtap="saveAddress" bindtouchstart="touchStart1" bindtouchend="touchEnd1">
+                <text class="text_bottom">保存</text>
+            </button>
+        </form>
+    </view>
+</view>
