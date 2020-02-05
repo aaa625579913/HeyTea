@@ -1,5 +1,10 @@
-<!-- miniprogram/pages/tabBar/page/store/store.wxml -->
-<view class="contain">
-    <image style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);height:400rpx;width:400rpx;" src="../../static/images/tips.png" />
-    <view style="position:absolute;top:70%;left:50%;transform:translate(-50%,-50%);font-size:40rpx;font-weight:bold;">暂无数据</view>
+<view style="position:fixed;width:100%;z-index:1000;height:{{statusBarHeight+44}}px;width:100%;display:flex;justify-content: center;background:#ffffff;z-index:999;">
+    <!-- <view style="position:absolute;height:70rpx;width:70rpx;left:16rpx;top:{{statusBarHeight+4}}px;display:flex;align-items:center;justify-content:center;" bindtap="goback">
+        <image src='../../static/images/back_b.png'  style='width:21rpx;height:36rpx;left:28rpx;'></image>
+    </view> -->
+    <view style='position:absolute;top:{{statusBarHeight+8}}px;font-size:32rpx;font-weight:bold;z-index:999;'>
+        喜茶Go
+    </view>
 </view>
+
+<view class="test"></view>

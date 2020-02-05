@@ -33,13 +33,11 @@
             <image class="top-intro-img" src="../../static/images/tips.png" />
             <text class="top-intro-intro">冬日来点暖，我们的大部分饮品都可制作热饮咯咯咯</text>
             <text class="top-intro-more" bindtap="showMore">更多</text>
-            <image class="top-intro-down" src="{{showMore?'../../static/images/up.png':'../../static/images/down.png'}}" bindtap="showMore"/>
+            <image class="top-intro-down" src="{{showMore?'../../static/images/up.png':'../../static/images/down.png'}}" bindtap="showMore" />
         </view>
     </view>
     <view wx:if="{{showMore}}" class="coverAll-more" bindtap="closeMore"></view>
-    <view wx:if="{{showMore}}" class="cover-more">
-
-    </view>
+    <view wx:if="{{showMore}}" class="cover-more"></view>
     <view class="main-body">
         <view class="categroy-left">
             <view wx:for="{{category}}" wx:key="index" data-id="{{item.id}}" data-img="{{item.img}}" data-index="{{index}}" bindtap="switchTab" class="cate-list {{curIndex === index?'on':''}}">
@@ -64,47 +62,97 @@
                     </swiper-item>
                 </block>
             </swiper>
-            <block wx:for="{{detail.bodyInfoList}}" wx:key="index">
+            <block wx:for="{{detail.bodyInfoList}}" wx:key="unique">
                 <view class="cate-title">{{item.title}}</view>
-                <block wx:for="{{item.infoList}}" wx:key="index">
-                    <view class="cate-info">
-                        <image class="info-img" src="{{item.img}}" />
-                        <view class="info-area">
-                            <view class="info-name">{{item.name}}</view>
-                            <view class="info-intro">{{item.intro}}</view>
-                            <view class="info-bottom">
-                                <view class="into-value">￥{{item.value}}</view>
-                                <view class="info-add" bindtap="showInfo">选规格</view>
+                <view class="cate-info" wx:for="{{item.infoList}}" wx:key="id" wx:for-index="unique" wx:for-item="infoList">
+                    <image class="info-img" src="{{infoList.img}}" />
+                    <view class="info-area">
+                        <view class="info-name">{{infoList.name}}</view>
+                        <view class="info-intro">{{infoList.intro}}</view>
+                        <view class="info-bottom">
+                            <view class="into-value">￥{{infoList.value}}</view>
+                            <view class="info-add" bindtap="showInfo" data-unique="{{item.unique}}" data-id="{{infoList.id}}">
+                                选规格
                             </view>
                         </view>
                     </view>
-                </block>
+                </view>
             </block>
         </scroll-view>
     </view>
 </view>
 <!-- 半透明背景图 -->
 <view wx:if="{{showInfo}}" class="coverAll-info" bindtap="closeInfo"></view>
+<view wx:if="{{showCartInfo}}" class="coverAll-info" bindtap="closeCartInfo"></view>
 <!-- 选规格提示窗 -->
 <view wx:if="{{showInfo}}" class="coverAll-info-add">
     <!-- 头部：名称和关闭按钮 -->
     <view class="cInfo-header">
-        <text class="header-text">Great头</text>
-        <image class="header-X" src="../../static/images/close.png" bindtap="closeInfo"/>
+        <text class="header-text">{{name}}</text>
+        <image class="header-X" src="../../static/images/close.png" bindtap="closeInfo" />
     </view>
-    <!-- 身体:title和选择按钮
-    <view class="cInfo-body">
-        <view class="body-title"></view>
-        <radio class="body-radio" />
+    <!-- 身体:title和选择按钮 -->
+    <scroll-view scroll-y="{{isScroll}}">
+        <view class="cInfo-body">
+            <view class="body-title">规格：</view>
+            <view style="display:flex">
+                <view class="status {{sizeIndex==index?'active':''}}" wx:for="{{info}}" wx:key="unique" data-type='0' data-index='{{index}}' bindtap="handleChoose">
+                    {{item}}
+                </view>
+            </view>
+            <view class="body-title" style="margin-top:20rpx">糖度：</view>
+            <view style="display:flex;flex-wrap: wrap;">
+                <view class="status {{sugarIndex==index?'active':''}}" wx:for="{{sugar}}" wx:key="unique" data-type='1' data-index='{{index}}' bindtap="handleChoose">
+                    {{item}}
+                </view>
+            </view>
+            <view class="body-title" style="margin-top:20rpx">加料：</view>
+            <view style="display:flex;flex-wrap: wrap;">
+                <view class="status {{addIndex==index?'active':''}}" wx:for="{{add}}" wx:key="unique" data-type='2' data-index='{{index}}' bindtap="handleChoose">
+                    {{item}}
+                </view>
+            </view>
+        </view>
+        <!-- 底部:总金额及状态  和提交按钮 -->
+        <view class="cInfo-bottom">
+            <view class="bottom-left">
+                <view class="left-money">￥{{value}}</view>
+                <view class="left-tips">{{sizeInfo}} {{sugarInfo}} {{addInfo}}</view>
+            </view>
+            <button class="bottom-right" bindtap="handleSubmit">购物袋</button>
+        </view>
+    </scroll-view>
+</view>
+<!-- 底部购物袋 -->
+<view class="cart" wx:if="{{showCart}}">
+    <!-- 购物车详情 -->
+    <view class="deleteCart" wx:if="{{showCartInfo}}" bindtap="deleteCart">
+        <image class="deleteImg" src="../../static/images/delete.png" />
+        <text class="deleteText">清空购物车</text>
     </view>
-    底部:总金额及状态  和提交按钮
-    <view class="cInfo-bottom">
-        <view class="bottom-left">
-            <view class="left-money"></view>
-            <view class="left-tips"></view>
+    <view class="cartInfo" wx:if="{{showCartInfo}}">
+        <view class="cartInfo-single" wx:for="{{cartList}}" wx:key="index">
+            <view class="cartInfo-single-left">
+                <text class="cartInfo-single-left-top">{{item.name}}</text>
+                <text class="cartInfo-single-left-bottom">{{item.sizeInfo}} {{item.sugarInfo}} {{item.addInfo}}</text>
+            </view>
+            <view class="cartInfo-single-right">
+                <view class="cartInfo-single-right-money">￥{{item.value}}</view>
+                <view class="cartInfo-single-right-sub" bindtap="subNum">-</view>
+                <view class="cartInfo-single-right-num">{{index+1}}</view>
+                <view class="cartInfo-single-right-add" bindtap="addNum" data-index="{{index}}">+</view>
+            </view>
         </view>
-        <view class="bottom-right">
-            <image class="right-img" src=""/>
+    </view>
+    <view class="cart-bottom">
+        <view class="cart-left">
+            <view class="shoppingBag" bindtap="showCartInfo">
+                <image class="shoppingBag-img" src="../../static/images/cart.png" />
+                <text class="shoppingBag-text">购物袋</text>
+                <view class="shoppingBag-num">{{cartNum}}</view>
+            </view>
+            <view class="count">￥{{cartCount}}</view>
         </view>
-    </view> -->
+        <view class="cart-right" bindtap="onContinue">结算</view>
+    </view>
 </view>
